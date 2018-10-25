@@ -266,20 +266,29 @@ func (this *HousesController) Post() {
 		facility := &models.Facility{Id: id}
 		facilities = append(facilities, facility)
 	}
+	beego.Info("print facilities", facilities)
 
-	// 第一个参数的对象，主键必须有值
-	// 第二个参数为对象需要操作的 M2M 字段
-	// QueryM2Mer 的 api 将作用于 Id 为 1 的 House
-	m2mhouse_facility := o.QueryM2M(&house, "Facilities")
+	//增加判断附属设施是否为空，有则连表，无则继续
+	//对切片虽然是空的但其实里面有地址所以不能用nil判断 要用len(s)==0这样判断
+	if len(facilities) != 0 {
+		//goto LOOP 测试goto
+		// 第一个参数的对象，主键必须有值
+		// 第二个参数为对象需要操作的 M2M 字段
+		// QueryM2Mer 的 api 将作用于 Id 为 1 的 House
+		m2mhouse_facility := o.QueryM2M(&house, "Facilities")
+		beego.Info("print m2mhouse_facility", m2mhouse_facility)
+		num, err := m2mhouse_facility.Add(facilities)
+		if err != nil {
+			rep.Errno = utils.RECODE_DBERR
+			rep.Errmsg = utils.RecodeText(rep.Errno)
+			return
+		}
+		beego.Debug("house m2m facility insert num =", num, " succ!")
+	} else {
 
-	num, err := m2mhouse_facility.Add(facilities)
-	if err != nil {
-		rep.Errno = utils.RECODE_DBERR
-		rep.Errmsg = utils.RecodeText(rep.Errno)
-		return
+		//LOOP:
+		beego.Info("设施为空facilities=nil")
 	}
-	beego.Debug("house m2m facility insert num =", num, " succ!")
-
 	//将index缓存删除
 	redis_config_map := map[string]string{
 		"key":   "ihome_go",
@@ -306,7 +315,7 @@ func (this *HousesController) UploadHouseImage() {
 	defer this.RetData(&rep)
 
 	house_id := this.Ctx.Input.Param(":id")
-
+	beego.Info("print house_id", house_id)
 	file, header, err := this.GetFile("house_image")
 	if err != nil {
 		rep.Errno = utils.RECODE_REQERR
