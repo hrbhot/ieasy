@@ -232,7 +232,7 @@ func (this *UserController) Get() {
 
 	//更改user的avatar_url路径 加上服务器前缀
 	user.Avatar_url = utils.AddDomain2Url(user.Avatar_url)
-
+	beego.Info("打印user.Avatar_url地址", user.Avatar_url)
 	rep.Data = user
 	return
 }

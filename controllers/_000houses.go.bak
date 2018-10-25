@@ -41,7 +41,6 @@ type HousesResp struct {
 type HouseInfo struct {
 	Area_id    string   `json:"area_id"`    //归属地的区域编号
 	Title      string   `json:"title"`      //房屋标题
-	Cname      string   `json:"cname"`      //客户姓 nom de client
 	Price      string   `json:"price"`      //单价,单位:分
 	Address    string   `json:"address"`    //地址
 	Room_count string   `json:"room_count"` //房间数目
@@ -152,11 +151,8 @@ func (this *HousesController) Get() {
 	this.Ctx.Input.Bind(&sk, "sk")
 	var page int
 	this.Ctx.Input.Bind(&page, "p")
-	//增加title做测试
-	//	var title string
-	//	this.Ctx.Input.Bind(&title, "title")
+
 	beego.Debug(aid, sd, ed, sk, page)
-	//	beego.Info("打印title浏览器的值=", title)
 
 	//把时间从str转换成字符串格式
 
@@ -172,11 +168,8 @@ func (this *HousesController) Get() {
 	o := orm.NewOrm()
 
 	qs := o.QueryTable("house")
-	//这是原来的注释，注释掉了user_id, 显示id大于1的所有houses内容，双下划线__gt是大于的意思
-	//	num, err := qs.Filter("title", title).All(&houses)
 
 	num, err := qs.Filter("area_id", aid).All(&houses)
-	beego.Info("0000000000000000000====")
 	if err != nil {
 		rep.Errno = utils.RECODE_PARAMERR
 		rep.Errmsg = utils.RecodeText(rep.Errno)
@@ -185,20 +178,14 @@ func (this *HousesController) Get() {
 
 	total_page := int(num)/models.HOUSE_LIST_PAGE_CAPACITY + 1
 	house_page := 1
-	//定义接口
+
 	house_list := []interface{}{}
-	beego.Info("11111===")
-	//	遍历houses，数据库中house表
 	for _, house := range houses {
 		o.LoadRelated(&house, "Area")
 		o.LoadRelated(&house, "User")
 		o.LoadRelated(&house, "Images")
 		o.LoadRelated(&house, "Facilities")
-		//增加title
-		//	o.LoadRelated(&house, "title")
-
 		house_list = append(house_list, house.To_house_info())
-		beego.Info("打印house_list=", house_list)
 	}
 
 	data := map[string]interface{}{}
@@ -231,7 +218,6 @@ func (this *HousesController) Post() {
 
 	house.Room_count, _ = strconv.Atoi(req.Room_count)
 	house.Title = req.Title
-	house.Cname = req.Cname
 	house.Acreage, _ = strconv.Atoi(req.Acreage)
 	house.Unit = req.Unit
 	house.Deposit, _ = strconv.Atoi(req.Deposit)
@@ -283,8 +269,8 @@ func (this *HousesController) Post() {
 	//将index缓存删除
 	redis_config_map := map[string]string{
 		"key":   "ihome_go",
-		"conn":  ":6379",
-		"dbNum": "1",
+		"conn":  utils.G_redis_addr + ":" + utils.G_redis_port,
+		"dbNum": utils.G_redis_dbnum,
 	}
 	redis_config, _ := json.Marshal(redis_config_map)
 
@@ -399,10 +385,8 @@ func (this *HousesController) GetOneHouseInfo() {
 	//先从缓存中获取房屋数据,将缓存数据返回前端即可
 	redis_config_map := map[string]string{
 		"key":   "ihome_go",
-		"conn":  ":6379",
-		"dbNum": "1",
-		//	cache_conn, err := cache.NewCache("redis", `{"key":"ieasy","conn":":6379","dbNum":"0"}`)
-
+		"conn":  utils.G_redis_addr + ":" + utils.G_redis_port,
+		"dbNum": utils.G_redis_dbnum,
 	}
 	redis_config, _ := json.Marshal(redis_config_map)
 
@@ -484,8 +468,8 @@ func (this *HousesController) IndexHouses() {
 	//先从缓存中获取房屋数据,将缓存数据返回前端即可
 	redis_config_map := map[string]string{
 		"key":   "ihome_go",
-		"conn":  ":6379",
-		"dbNum": "1",
+		"conn":  utils.G_redis_addr + ":" + utils.G_redis_port,
+		"dbNum": utils.G_redis_dbnum,
 	}
 	redis_config, _ := json.Marshal(redis_config_map)
 

@@ -43,8 +43,11 @@ func (this *AreaController) Get() {
 	areas_info_key := "area_info"
 	redis_config_map := map[string]string{
 		"key":   "ihome_go",
-		"conn":  utils.G_redis_addr + ":" + utils.G_redis_port,
-		"dbNum": utils.G_redis_dbnum,
+		"conn":  ":6379",
+		"dbNum": "1",
+
+		//老的redis		 cache_conn, err := cache.NewCache("redis", `{"key":"ieasy","conn":":6379","dbNum":"0"}`)
+
 	}
 	redis_config, _ := json.Marshal(redis_config_map)
 
