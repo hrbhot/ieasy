@@ -43,16 +43,16 @@ function updateHouseData(action) {
     var endDate = $("#end-date").val();
     var sortKey = $(".filter-sort>li.active").attr("sort-key");
    // 获取url中 title的值传到params里面
-  // var title = getUrlParam('title'); 
+   var title = getUrlParam('title'); 
     var params = {
-	aid:areaId,
-//        title:title,
+	    //aid:areaId,
+        title:title,
 	sd:startDate,
         ed:endDate,
         sk:sortKey,
         p:next_page
     };
-    $.get("/api/v1.0/houses", params, function(resp){
+    $.get("/api/v1.0/housest", params, function(resp){
         house_data_querying = false;
         if ("0" == resp.errno) {
             if ("0" == resp.data.total_page) {

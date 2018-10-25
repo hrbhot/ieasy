@@ -57,13 +57,14 @@ function goToSearchPage(th) {
     location.href = url;
 }
 
-//回车按键
-
 //搜索id
 function goToSearchKey(){
-   var url = "/searchtitle.html?";
-   url +=("title="+$("#title").val());  
-   location.href = url;
+   var url = "/detail.html?";
+url +=("id="+$("#id").val());  
+  location.href = url;
+
+
+
 }
 $(document).ready(function(){
     // 检查用户的登录状态

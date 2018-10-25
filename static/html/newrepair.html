@@ -25,13 +25,19 @@
             <form id="form-house-info">
                 <li>
                     <div class="house-title">
-                        <h3>基本信息</h3>
+                        <h3>Coordonnées client</h3>
                     </div>
                     <div class="house-content">
                         <div class="form-group">
-                            <label for="house-title">房屋标题</label>
+                            <label for="house-title">Numéro de fiche</label>
                             <input type="text" class="form-control" name="title" id="house-title" required>
                         </div>
+
+			<div class="form-group">
+                            <label for="house-cname">Nom</label>
+                            <input type="text" class="form-control" name="cname" id="house-cname" required>
+                        </div>
+
                         <div class="form-group">
                             <label for="house-price">每晚价格</label>
                             <input type="number" class="form-control" name="price" id="house-price" required>
@@ -262,7 +268,7 @@
                         </ul>
                     </div>
                 </li>
-                <input type="submit" class="btn btn-success btn-commit" value="发布房源信息">
+                <input type="submit" class="btn btn-success btn-commit" value="Enregistrer">
                 <div class="error-msg text-center"><i class="fa fa-exclamation-circle"></i>请将全部信息填写完整后再提交</div>
             </form>
             <form id="form-house-image" action="/api/house/image" method="post" enctype="multipart/form-data">
@@ -291,7 +297,7 @@
             <div class="mask"></div>
         </div>
         <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>爱家租房&nbsp;&nbsp;享受家的温馨</p>
+            <p><span><i class="fa fa-copyright"></i></span>===yin v0.1===</p>
         </div> 
     </div>
     
