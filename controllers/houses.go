@@ -39,20 +39,26 @@ type HousesResp struct {
 }
 
 type HouseInfo struct {
-	Area_id    string   `json:"area_id"`    //归属地的区域编号
-	Title      string   `json:"title"`      //房屋标题
-	Cname      string   `json:"cname"`      //客户姓 nom de client
-	Price      string   `json:"price"`      //单价,单位:分
-	Address    string   `json:"address"`    //地址
-	Room_count string   `json:"room_count"` //房间数目
-	Acreage    string   `json:"acreage"`    //房屋总面积
-	Unit       string   `json:"unit"`       //房屋单元,如 几室几厅
-	Capacity   string   `json:"capacity"`   //房屋容纳的总人数
-	Beds       string   `json:"beds"`       //房屋床铺的配置
-	Deposit    string   `json:"deposit"`    //押金
-	Min_days   string   `json:"min_days"`   //最好入住的天数
-	Max_days   string   `json:"max_days"`   //最多入住的天数 0表示不限制
-	Facilities []string `json:"facility"`   //房屋设施
+	Area_id              string   `json:"area_id"`              //归属地的区域编号
+	Title                string   `json:"title"`                //房屋标题
+	Cname                string   `json:"cname"`                //客户姓 nom de client
+	Cname_1              string   `json:"cname_1"`              //客户名 prenom de client
+	Email                string   `json:"email"`                //客户email
+	Mobile_client        string   `json:"mobile_client"`        //客户手机号码
+	Description_material string   `json:"description_material"` //客户设备详细信息
+	Description_panne    string   `json:"description_panne"`    //客户设备问题描述
+	Observations         string   `json:"observations"`         //devis
+	Price                string   `json:"price"`                //单价,单位:分
+	Address              string   `json:"address"`              //地址
+	Room_count           string   `json:"room_count"`           //房间数目
+	Acreage              string   `json:"acreage"`              //房屋总面积
+	Unit                 string   `json:"unit"`                 //房屋单元,如 几室几厅
+	Capacity             string   `json:"capacity"`             //房屋容纳的总人数
+	Beds                 string   `json:"beds"`                 //房屋床铺的配置
+	Deposit              string   `json:"deposit"`              //押金
+	Min_days             string   `json:"min_days"`             //最好入住的天数
+	Max_days             string   `json:"max_days"`             //最多入住的天数 0表示不限制
+	Facilities           []string `json:"facility"`             //房屋设施
 }
 
 type Image_url struct {
@@ -232,6 +238,12 @@ func (this *HousesController) Post() {
 	house.Room_count, _ = strconv.Atoi(req.Room_count)
 	house.Title = req.Title
 	house.Cname = req.Cname
+	house.Cname_1 = req.Cname_1
+	house.Email = req.Email
+	house.Mobile_client = req.Mobile_client
+	house.Description_material = req.Description_material
+	house.Description_panne = req.Description_panne
+	house.Observations = req.Observations
 	house.Acreage, _ = strconv.Atoi(req.Acreage)
 	house.Unit = req.Unit
 	house.Deposit, _ = strconv.Atoi(req.Deposit)
