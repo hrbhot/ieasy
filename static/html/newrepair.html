@@ -38,7 +38,42 @@
                             <input type="text" class="form-control" name="cname" id="house-cname" required>
                         </div>
 
-                        <div class="form-group">
+<div class="form-group">
+      <label for="house-cname_1">Prénom</label>
+      <input type="text" class="form-control" name="cname_1" id="house-cname_1" >
+</div>
+ <div class="form-group">
+      <label for="house-email">Email</label>
+      <input type="text" class="form-control" name="email" id="house-email">
+</div>
+ <div class="form-group">
+      <label for="house-mobile_client">Portable</label>
+      <input type="text" class="form-control" name="mobile_client" id="house-mobile_client" required>
+</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="house-title">
+                        <h3>Description du metériel</h3>
+                    </div>
+                    <div class="house-content">
+			<ul class="house-facility-list clearfix">
+                            <li>
+                                <div class="checkbox">
+                                     <label>
+                                          <input type="checkbox" name="facility" value="1">PC Portable
+                                     </label>
+                                </div>
+                            </li>
+			</ul>
+
+			 <div class="form-group">
+                            <label for="house-description_material">Description</label>
+                            <textarea class="form-control" name="description_material" id="house-description_material" ></textarea>
+                        </div> 
+
+
+			<div class="form-group">
                             <label for="house-price">每晚价格</label>
                             <input type="number" class="form-control" name="price" id="house-price" required>
                         </div>
@@ -57,13 +92,6 @@
                             <label for="house-address">详细地址</label>
                             <textarea class="form-control" name="address" id="house-address" required></textarea>
                         </div> 
-                    </div>
-                </li>
-                <li>
-                    <div class="house-title">
-                        <h3>详细信息</h3>
-                    </div>
-                    <div class="house-content">
                         <div class="form-group">
                             <label for="house-room-count">出租房间数目</label>
                             <input type="number" class="form-control" name="room_count" id="house-room-count" required>
@@ -104,13 +132,6 @@
                     </div>
                     <div class="house-content">
                         <ul class="house-facility-list clearfix">
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="1">无线网络
-                                     </label>
-                                </div>
-                            </li>
                             <li>
                                 <div class="checkbox">
                                      <label>
