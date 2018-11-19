@@ -30,25 +30,28 @@
                     <div class="house-content">
                         <div class="form-group">
                             <label for="house-title">Numéro de fiche</label>
-                            <input type="text" class="form-control" name="title" id="house-title" required>
-                        </div>
+                            <input type="text" class="form-control" placeholder="Ex. 012345"  name="title" id="house-title" required>
+                       </div>
 
 			<div class="form-group">
-                            <label for="house-cname">Nom</label>
-                            <input type="text" class="form-control" name="cname" id="house-cname" required>
-                        </div>
+                          <!--  <label for="house-cname">Nom</label> -->
+		      	  <input type="text" class="form-control" placeholder="Nom" name="cname" id="house-cname" required>
+			  </div>
 
-<div class="form-group">
-      <label for="house-cname_1">Prénom</label>
-      <input type="text" class="form-control" name="cname_1" id="house-cname_1" >
+			<!--<div class="form-group"> -->
+	<!--  <label for="house-cname_1">Prénom</label>-->
+	<div class="form-group">
+      <input type="text" class="form-control" placeholder="Prénom" name="cname_1" id="house-cname_1" >
 </div>
  <div class="form-group">
       <label for="house-email">Email</label>
-      <input type="text" class="form-control" name="email" id="house-email">
+      <input type="text" class="form-control" placeholder="Email" name="email" id="house-email">
+			  <div class="col">  
 </div>
  <div class="form-group">
       <label for="house-mobile_client">Portable</label>
-      <input type="text" class="form-control" name="mobile_client" id="house-mobile_client" required>
+      <input type="text" class="form-control" placeholder="Portable" name="mobile_client" id="house-mobile_client" required>
+			  <div class="col">  
 </div>
                     </div>
                 </li>
@@ -74,11 +77,12 @@
 
 
 			<div class="form-group">
-                            <label for="house-price">每晚价格</label>
+                            <label for="house-price">Prix Réparation</label>
                             <input type="number" class="form-control" name="price" id="house-price" required>
                         </div>
-                        <div class="form-group">
-                            <label for="area-id">所在城区</label>
+                        
+			<div class="form-group">
+                            <label for="area-id">Position de placement</label>
                             <select class="form-control" id="area-id" name="area_id">
                             </select>
                             <script id="areas-tmpl" type="text/html">
@@ -88,6 +92,7 @@
                             </script>
 
                         </div>
+		<!--	
                         <div class="form-group">
                             <label for="house-address">详细地址</label>
                             <textarea class="form-control" name="address" id="house-address" required></textarea>
@@ -124,9 +129,13 @@
                             <label for="house-max-days">最多入住天数</label>
                             <input type="number" class="form-control" name="max_days" id="house-max-days" placeholder="0表示无限制" required>
                         </div>
+
+		-->
                     </div>
                 </li>
                 <li>
+
+			<!--
                     <div class="house-title">
                         <h3>配套设施</h3>
                     </div>
@@ -288,6 +297,7 @@
                             </li>
                         </ul>
                     </div>
+			-->
                 </li>
                 <input type="submit" class="btn btn-success btn-commit" value="Enregistrer">
                 <div class="error-msg text-center"><i class="fa fa-exclamation-circle"></i>请将全部信息填写完整后再提交</div>
@@ -318,7 +328,7 @@
             <div class="mask"></div>
         </div>
         <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>===yin v0.1===</p>
+            <p><span><i class="fa fa-copyright"></i></span>Developed by yin v.01</p>
         </div> 
     </div>
     

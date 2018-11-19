@@ -24,22 +24,26 @@
             <ul class="houses-list auth-warn">
                 <li>
                     <div class="house-title">
-                        <h3>尚未进行实名认证，无法发布房屋信息！</h3>
+			    <h3>vous n'avez pas l'autorisation d'accès, contacter l'administrateur！</h3>
                     </div>
+		    <!--
                     <div class="house-content">
-                        <a href="/auth.html" class="btn btn-success">去实名认证</a>
+                        <a href="/auth.html" class="btn btn-success">去认证</a>
                     </div>
+		    -->
                 </li>
             </ul>
             <ul id="houses-list" class="houses-list">
             </ul>
             <script id="houses-list-tmpl" type="text/html">
-                <li>
+<!--不必这里显示
+		<li>
                     <div class="new-house">
                         <a href="/newrepair.html">Nouvelle réparation</a>
                     </div>
                 </li>
-                {{each houses as house}}
+-->    
+	    {{each houses as house}}
                 <li>
                     <a href="/detail.html?id={{house.house_id}}">
                         <div class="house-title">
@@ -49,7 +53,7 @@
                             <img src="{{house.img_url}}">
                             <div class="house-text">
                                 <ul>
-                                    <li>位于：{{house.area_name}}</li>
+      <!--临时去掉                              <li>位于：{{house.area_name}}</li>               -->
                                     <li>Prix：{{(house.price/100.0).toFixed(0)}} €</li>
                                     <li>Date de création：{{house.ctime}}</li>
                                 </ul>
@@ -61,7 +65,7 @@
             </script>
         </div>
         <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>===yin v0.1===</p>
+            <p><span><i class="fa fa-copyright"></i></span>Developed by yin v.01=</p>
         </div> 
     </div>
     

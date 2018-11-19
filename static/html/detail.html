@@ -36,14 +36,16 @@
         </div>
         <script id="house-detail-tmpl" type="text/html">
             <div class="detail-header layout-style">
-                <h2 class="house-title">{{house.title}}</h2>
+                <h2 class="house-title">Numero fiche: {{house.title}}</h2>
                 <div class="landlord-pic"><img src="{{house.user_avatar}}"></div>
                 <h2 class="landlord-name">Créateur： <span>{{house.user_name}}</span></h2>
             </div>
             <div class="house-info layout-style">
-               <h3>address 这里应该显示价格</h3>
+               <h3>Description Problem</h3>
                <ul class="house-info-list text-center">
-                    <li>{{house.address}}</li>
+		   
+<!--  <li>{{house.address}}</li> -->
+			<li>{{house.description_material}}</li>
                </ul>
 		<ul class="house-info-list">
 		<li>Nom<span>
@@ -72,7 +74,8 @@
                 </li>
     </ul>
             </div>
-            <ul class="house-type layout-style">
+<!--           
+ <ul class="house-type layout-style">
                 <li>
                     <span class="icon-house"></span>
                     <div class="icon-text">
@@ -95,16 +98,19 @@
                     </div>
                 </li>
             </ul>
-            <div class="house-info layout-style">
-                <h3>房间详情</h3>
+-->    
+	<div class="house-info layout-style">
+                <h3>Description</h3>
                 <ul class="house-info-list">
+<!--
                     <li>收取押金<span>{{(house.deposit/100.0).toFixed(0)}}</span></li>
                     <li>最少入住天数<span>{{house.min_days}}</span></li>
-                    <li>最多入住天数<span>{{if house.max_days==0}}无限制{{else}}{{house.max_days}}{{/if}}</span></li>
-                </ul>
+		    <li>最多入住天数<span>{{if house.max_days==0}}无限制{{else}}{{house.max_days}}{{/if}}</span></li>
+-->
+		</ul>
             </div>
             <div class="house-facility layout-style">
-                <h3>配套设施</h3>
+                <h3>Description du materiel</h3>
                 <ul class="house-facility-list clearfix">
                     <li><span class="{{if house.facilities.indexOf(1)>=0}}wirelessnetwork-ico{{else}}jinzhi-ico{{/if}}"></span>PC Portable</li>
                     <li><span class="{{if house.facilities.indexOf(2)>=0}}shower-ico{{else}}jinzhi-ico{{/if}}"></span>2</li>
@@ -131,6 +137,7 @@
                     <li><span class="{{if house.facilities.indexOf(23)>=0}}hotbathtub-ico{{else}}jinzhi-ico{{/if}}"></span>23</li>
                 </ul>
             </div>
+<!--
             {{if house.comments }}
             <div class="house-info layout-style">
                 <h3>评价信息</h3>
@@ -144,10 +151,15 @@
                 </ul>
             </div>
             {{/if}}
-        </script>
-        <a class="book-house" href="">即刻预定</a>
-        <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>===yin v0.1===</p>
+-->
+
+	</script>
+
+<!--暂时隐藏
+	<a class="book-house" href="">即刻预定</a>
+  
+-->	<div class="footer">
+            <p><span><i class="fa fa-copyright"></i></span>Developed by yin v.01</p>
         </div>
     </div>
     

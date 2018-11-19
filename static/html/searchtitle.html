@@ -32,11 +32,12 @@
                 <a href="/detail.html?id={{house.house_id}}"><img src="{{house.img_url}}"></a>
                 <div class="house-desc">
                     <div class="landlord-pic"><img src="{{house.user_avatar}}"></div>
-                    <div class="house-price">￥<span>{{(house.price/100.0).toFixed(0)}}</span>/晚</div>
+                    <div class="house-price"><span>{{(house.price/100.0).toFixed(0)}}</span> €</div>
                     <div class="house-intro">
                         <span class="house-title">Numero fiche: {{house.title}}</span>
+<!--暂时隐藏
                         <em>出租{{house.room_count}}间 - {{house.order_count}}次入住 - {{house.address}}</em>
-                
+    -->           
 			
 		    </div>
                 </div>
@@ -44,7 +45,7 @@
             {{/each}}
         </script>
         <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>===yin v0.1===</p>
+            <p><span><i class="fa fa-copyright"></i></span>===Developed by yin v.01===</p>
         </div>
     </div>
     
